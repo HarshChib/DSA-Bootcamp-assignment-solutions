@@ -1,0 +1,12 @@
+public class Node {
+	public static void main(String[] args) {
+		System.out.println(sum(3,0));
+	}
+
+	static int sum(int n,int sum) {
+		if(n==0)
+			return sum;
+		sum+=n;
+		return sum(n-1,sum);
+	}
+}

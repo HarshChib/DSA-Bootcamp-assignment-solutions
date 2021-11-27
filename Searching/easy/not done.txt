@@ -1,0 +1,5 @@
+Maximum Value at a Given Index in a Bounded Array 
+Minimum Absolute Sum Difference
+Search a 2D Matrix
+Find a Peak Element II
+Frequency of the Most Frequent Element

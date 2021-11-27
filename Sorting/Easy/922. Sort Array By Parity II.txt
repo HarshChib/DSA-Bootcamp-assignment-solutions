@@ -1,0 +1,27 @@
+class Solution {
+    public int[] sortArrayByParityII(int[] nums) {
+     int nexteven=0 , i=0;
+        int n= nums.length;
+        while(i<n && nexteven<n)
+        {
+            while(nexteven<n && nums[nexteven]%2==0)
+            {
+                nexteven+=2;
+            }
+            
+            if(i%2==1 && nums[i]%2==0)
+            {
+                swap(nums,i , nexteven);
+            }
+            
+            i++;
+        }
+        
+        return nums;
+    }
+     static void swap(int []arr,int i,int j){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+}

@@ -1,0 +1,96 @@
+class Solution {
+    private final String[] words = new String[]{
+            "",
+            "One",
+            "Two",
+            "Three",
+            "Four",
+            "Five",
+            "Six",
+            "Seven",
+            "Eight",
+            "Nine",
+            "Ten",
+            "Eleven",
+            "Twelve",
+            "Thirteen",
+            "Fourteen",
+            "Fifteen",
+            "Sixteen",
+            "Seventeen",
+            "Eighteen",
+            "Nineteen"
+        };
+        
+       private final String[] tenWords = new String[]{
+            "",
+            "",
+            "Twenty",
+            "Thirty",
+            "Forty",
+            "Fifty",
+            "Sixty",
+            "Seventy",
+            "Eighty",
+            "Ninety"
+        };
+        
+      private final  String[] thousandWords = new String[]{
+            "",
+            "Thousand",
+            "Million",
+            "Billion"
+        };
+        
+    
+    public String numberToWords(int num) {
+        if(num == 0) return "Zero";
+            
+        
+        return numberToWords(num,0).trim();
+    }
+        
+    public String numberToWords(int num, int thousands){        
+        StringBuilder sb = new StringBuilder();
+        
+        if(num >= 1000){
+            sb.append(numberToWords(num/1000,thousands + 1));
+        }
+        
+        int remainder = num % 1000;
+        
+        if(remainder == 0) return sb.toString();
+        
+        if(remainder >= 100){
+            int hundreds = remainder / 100;
+            
+            sb.append(" ");
+            sb.append(words[hundreds]);
+            sb.append(" ");
+            sb.append("Hundred");
+        }
+        
+        remainder %= 100;
+        
+        if(remainder < 20){
+            if(words[remainder].length()>0) sb.append(" ");
+            sb.append(words[remainder]);
+        }
+        else {
+            int tens = remainder / 10;
+            sb.append(" ");
+            sb.append(tenWords[tens]);
+            
+            if(words[remainder % 10].length()>0) sb.append(" ");
+            
+            sb.append(words[remainder % 10]);
+        }
+        
+        if(thousands > 0){
+            sb.append(" ");
+            sb.append(thousandWords[thousands]);
+        }
+        
+        return sb.toString();
+    }
+}

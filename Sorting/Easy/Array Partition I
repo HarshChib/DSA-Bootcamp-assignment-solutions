@@ -1,0 +1,13 @@
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int sum=0;
+        for(int i=0;i<nums.length-1;i+=2){
+            sum+=Math.min(nums[i],nums[i+1]);
+        }
+        return sum;
+    }
+}
+//we are taking pairs of two  and n/2 no. of pairs (incrementing by 2)
+and after sorting we get max sum from these pairs because 
+we are getting the min element of the next max element pair

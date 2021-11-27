@@ -1,0 +1,20 @@
+class Solution {
+    public char findKthBit(int n, int k) {
+        return getChar("0", k);
+    }
+    static char getChar(String s, int k) {
+        if (s.length() >= k)
+            return s.charAt(k - 1);
+        return getChar(s + "1" + reverseInvert(s), k);
+    }
+    static String reverseInvert(String s) {
+        StringBuilder sb = new StringBuilder("");
+        for (char c : s.toCharArray()) {
+            if (c == '0')
+                sb.append('1');
+            else 
+                sb.append('0');
+        }
+        return sb.reverse().toString();
+    }
+}

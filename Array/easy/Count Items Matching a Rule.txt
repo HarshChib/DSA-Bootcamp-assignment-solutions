@@ -1,0 +1,18 @@
+class Solution {
+    public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
+        int count=0;
+        int rk=-1;
+        if(ruleKey.equals("type"))
+            rk=0;
+        else if(ruleKey.equals("color"))
+            rk=1;
+        else
+            rk=2;
+        for(List<String> list: items){
+            String s=list.get(rk);
+            if(s.equals(ruleValue))
+                count++;
+        }
+        return count;
+    }
+}

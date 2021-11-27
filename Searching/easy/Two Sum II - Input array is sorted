@@ -1,0 +1,18 @@
+class Solution {
+    public int[] twoSum(int[] arr, int target) {
+        int low=0;
+        int high=arr.length-1;
+        while(low<high){
+            int sum=arr[low]+arr[high];
+            if(sum==target)
+                break;
+            else if(sum>target)
+                high--;
+            else
+                low++;
+            
+        }
+        return new int[]{++low,++high};
+    }
+
+}

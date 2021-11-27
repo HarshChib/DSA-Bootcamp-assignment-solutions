@@ -1,0 +1,38 @@
+class Solution {
+    public int[] findRightInterval(int[][] x) {
+        int n=x.length;
+        int start[]=new int[n];
+        int res[]=new int[n];
+        HashMap<Integer,Integer> map=new HashMap<Integer,Integer>(); 
+        for(int i=0;i<n;i++){
+            start[i]=x[i][0];
+            map.put(start[i],i);
+        }
+        Arrays.sort(start);
+        for(int i=0;i<n;i++){
+           int endpt=x[i][1];
+            Pair<Boolean,Integer> search=bs(start,endpt);
+            if(search.getKey()){
+               res[i]=map.get(search.getValue()); 
+            }
+            else
+                res[i]=-1;
+        }
+        return res;
+    }
+   static Pair<Boolean,Integer> bs(int []start,int endpt){
+       int low=0;
+       int high=start.length-1;
+       if(endpt>start[high]) return new Pair<>(false,0);
+       while(low<=high){
+           int mid=low+(high-low)/2;
+           if(endpt==start[mid])
+               return new Pair<>(true,start[mid]);
+           if(endpt<start[mid])
+               high=mid-1;
+           else
+               low=mid+1;
+       }
+       return new Pair<>(true,start[low]);
+   }
+}

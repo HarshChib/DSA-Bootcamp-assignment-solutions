@@ -1,0 +1,30 @@
+class Solution {
+    public String largestNumber(int[] nums) {
+       
+       for(int i=0;i<nums.length-1;i++){
+         
+          for(int j=i+1;j<nums.length;j++){ 
+               String a=String.valueOf(nums[i]);
+               String b=String.valueOf(nums[j]);
+               long checkfirst=Long.parseLong(a+b);
+	               long checksecond=Long.parseLong(b+a);
+               if(checkfirst<checksecond)
+                   swap(nums,i,j);
+          }
+       }
+      
+        String s="";
+        for(int x:nums){
+            s+=String.valueOf(x);}
+         if(nums[0] ==0) {
+            return "0";
+        }
+           
+        return s;
+    }
+     static void swap(int []arr,int i,int j){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+}

@@ -1,0 +1,22 @@
+public class Node {
+	public static void main(String[] args) {
+	
+		System.out.println(isPowerOfTwo(6));
+	}
+
+	public static boolean isPowerOfTwo(int n) {
+        if(n < 1){
+            return false;
+        }
+        if(n == 1){
+            return true;
+        }
+        if(n % 2 == 0) {
+        	System.out.println(n);
+            return isPowerOfTwo(n/2);
+            }
+        
+        return false;
+    }
+
+}

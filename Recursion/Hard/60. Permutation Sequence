@@ -1,0 +1,36 @@
+class Solution {
+    public String getPermutation(int n, int k) {
+        
+        String s = "";
+        for (int i = 1; i <= n; i++) {
+            s = s + i;
+        }
+        return (permutation(s, k, '0', fact(n), s.length()));
+    }
+
+    private static String permutation(String s, int k, char res, int fact, int n) {
+        // TODO Auto-generated method stub
+        if (n == 1)
+            return s;
+        fact /= n;
+        int index = -1;
+        if (k % fact == 0) {
+            index = (k / fact) - 1;
+            res = s.charAt(index);
+            s = s.substring(0, index) + s.substring(index + 1);
+            return res + permutation(s, fact, res, fact, n - 1);
+        } else {
+            index = k / fact;
+            res = s.charAt(index);
+            s = s.substring(0, index) + s.substring(index + 1);
+            return res + permutation(s, k % fact, res, fact, n - 1);
+        }
+    }
+
+    static int fact(int n) {
+        if (n <= 1) {
+            return 1;
+        }
+        return n * fact(n - 1);
+    }
+}

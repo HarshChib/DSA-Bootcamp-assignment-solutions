@@ -1,0 +1,14 @@
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int sum=0;
+        int max=Integer.MIN_VALUE;
+        for(int[] arr:accounts){
+            for(int i:arr){
+                sum+=i;
+            }
+            max=Math.max(max,sum);
+            sum=0;
+        }
+        return max;
+    }
+}

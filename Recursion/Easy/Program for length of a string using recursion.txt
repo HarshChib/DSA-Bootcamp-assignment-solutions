@@ -1,0 +1,16 @@
+public class Node {
+	public static void main(String[] args) {
+		int arr[] = { 1, 4, 3, -5, -4, 8, 6 };
+		String x = "harsh";
+		String s = x + '$';
+		int p = fun(s, 0);
+		System.out.println(p);
+	}
+
+	private static int fun(String s, int i) {
+		// TODO Auto-generated method stub
+		if (s.charAt(i) == '$')
+			return i;
+		return fun(s, i + 1);
+	}
+}

@@ -1,0 +1,17 @@
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+    int size = nums.length;
+        int[] squaredNums = new int[size];
+        int left = 0;
+        int right = size - 1;
+        int i = size -1;
+        
+        while(i >= 0) {
+            squaredNums[i--] = Math.abs(nums[left]) < Math.abs(nums[right]) ? nums[right] * nums[right--] : nums[left] * nums[left++];
+        }
+        
+        return squaredNums;
+    }
+}
+
+comapring absolute values of left with right

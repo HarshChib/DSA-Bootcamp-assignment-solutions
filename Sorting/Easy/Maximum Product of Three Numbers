@@ -1,0 +1,24 @@
+class Solution {
+    public int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        int mul=1;
+        int j=0;
+        int nmul=1;
+        for(int i=nums.length-1;i>=nums.length-3;i--){
+            mul*=nums[i];
+            if(j<=1){
+                nmul*=nums[j++];
+            }
+            
+        }
+        nmul*=nums[nums.length-1];
+        if(nmul>mul){
+            return nmul;
+        }
+        
+        return mul;
+    }
+}
+
+//nmul is taking first two negative numbers because product of them is poistive and muultiplying with max no. of array may give us max product ...
+so we compare it with the product of last 3 elements

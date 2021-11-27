@@ -1,0 +1,13 @@
+class Solution {
+    public int numberOfSteps(int num) {
+        return n(num,0);
+    }
+    static int n(int num,int count){
+        if(num==0)
+            return count;
+        if(num%2==0)
+            return n(num/2,count+1);
+        else
+            return n(num-1,count+1);
+    }
+}

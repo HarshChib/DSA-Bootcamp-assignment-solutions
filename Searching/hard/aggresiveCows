@@ -1,0 +1,46 @@
+import java.util.*;
+import java.lang.*;
+
+class Main
+{
+
+	public static void main(String[] args) throws java.lang.Exception {
+		Scanner sc= new Scanner(System.in);
+		int t=sc.nextInt();
+    	
+    	while(t-->0) {
+    		 int n, cows;
+     	    n=sc.nextInt();
+     	    cows=sc.nextInt();
+		int arr[] = new int[n];
+		 for(int i = 0;i<n;i++) arr[i]=sc.nextInt(); 
+		Arrays.sort(arr);
+	
+		
+		int low = 1, high = arr[n - 1] - arr[0], mid = 0, res = -1;
+
+		while (low <= high) {
+			mid = (low + high) / 2;
+			if (isPossible(mid, cows, arr)) {
+				res = mid;
+				low = mid + 1;
+			} else
+				high = mid - 1;
+		}
+		System.out.println(res);}
+	}
+
+	private static boolean isPossible(int dist, int cows, int[] arr) {
+		int count = 1;
+		int cord = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] - cord >= dist) {
+				count++;
+				cord = arr[i];
+			}
+		}
+		if (count >= cows)
+			return true;
+		return false;
+	}
+}

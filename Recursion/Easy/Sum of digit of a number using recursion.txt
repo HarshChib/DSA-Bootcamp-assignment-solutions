@@ -1,0 +1,15 @@
+public class Node {
+	public static void main(String[] args) {
+		int num = 11111;
+		int p = fun(num, 0);
+		System.out.println(p);
+	}
+
+	private static int fun(int num, int sum) {
+		// TODO Auto-generated method stub
+		if (num == 0)
+			return sum;
+		sum += (num % 10);
+		return fun(num / 10, sum);
+	}
+}

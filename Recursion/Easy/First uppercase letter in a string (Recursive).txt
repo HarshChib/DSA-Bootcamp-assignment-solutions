@@ -1,0 +1,12 @@
+private static void fun(String s,int i) { //i is the initial index  which is 0
+		// TODO Auto-generated method stub
+		if (s.length() == i) {
+			System.out.println("No upper case");
+			return ;
+		}
+		if(Character.isUpperCase(s.charAt(i))) {
+			System.out.println(s.charAt(i));
+			return;
+			}
+		fun(s, i + 1);
+	}

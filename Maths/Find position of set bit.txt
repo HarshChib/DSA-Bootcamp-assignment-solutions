@@ -1,0 +1,19 @@
+class Solution {
+    static int findPosition(int n) {
+        // code here
+       if(!isPowerOfTwo(n)){
+           return -1;
+       }
+       int count=1;
+       while((n&1)==0){
+           n>>=1;
+           count++;
+       }
+       return count;
+            
+    }
+    static boolean isPowerOfTwo(int n)
+    {
+        return (n > 0 && ((n & (n - 1)) == 0)) ? true : false;
+    }
+};

@@ -1,0 +1,128 @@
+public static void main(String f[]) {
+//		System.out.println(isprime(2));
+//		allprime(40);
+//		sieve(37, new boolean[38]);
+//		System.out.println(sqrt(10,2));
+//		System.out.println(newtonrapsonsqrt(40));
+//      System.out.println(findPosition(33554432));
+//		System.out.println(setSetBit(44,3,1,5));
+//		System.out.println(divide(43,8));
+//		System.out.println(square(-7));
+
+	}
+
+	private static int square(int i) {
+		int n = Math.abs(i);
+		if (n == 0)
+			return 0;
+		if ((n & 1) == 1)
+			return (square(n >> 1) << 2) + ((n >> 1) << 2) + 1;
+		return square(n >> 1) << 2;
+	}
+
+	private static int divide(int divident, int divisor) {
+		int q = 0;
+		while (divident >= divisor) {
+			q++;
+			divident -= divisor;
+		}
+		return q;
+	}
+
+	static int setSetBit(int x, int y, int l, int r) {
+		// code here
+		for (int i = l; i <= r; i++) {
+			int mask = 1 << (i - 1);
+			System.out.println(y & mask);
+			if ((y & mask) != 0)
+				x = x | mask;
+		}
+		return x;
+	}
+
+	static int findPosition(int n) {
+		// code here
+		int count = 0;
+		int x = n;
+		if (n == 0)
+			return -1;
+		while (n > 0) {
+			n -= (n & -n);
+			count++;
+		}
+		if (count > 1)
+			return -1;
+		return x & -x;
+
+	}
+
+	private static double newtonrapsonsqrt(int n) {
+		double x = n;
+		double root;
+		while (true) {
+			root = 0.5 * (x + (n / x));
+			if (Math.abs(root - x) < 0.01)
+				break;
+			x = root;
+		}
+		return root;
+	}
+
+	private static double sqrt(int n, int p) {
+		int low = 2;
+		int high = n;
+		int mid = Integer.MAX_VALUE;
+		double ans = 0;
+		while (low <= high) {
+			mid = low + (high - low) / 2;
+			if (mid * mid == n) {
+				return mid;
+			}
+			if (mid * mid > n) {
+				high = mid - 1;
+			} else
+				low = mid + 1;
+		}
+		double x = 0.1;
+		for (int i = 0; i < p; i++) {
+			while (ans * ans <= n) {
+				System.out.println(ans);
+				ans += x;
+			}
+			ans -= x;
+			x /= 10;
+		}
+		return ans;
+	}
+
+	private static void allprime(int n) {
+		for (int i = 2; i < n; i++) {
+			if (isprime(i))
+				System.out.println(i);
+		}
+	}
+
+	private static boolean isprime(int n) {
+		if (n % 2 == 0)
+			return false;
+		if (n <= 1)
+			return false;
+		int i = 2;
+		while (i * i <= n) {
+			if (n % i == 0)
+				return false;
+			i++;
+		}
+		return true;
+	}
+
+	private static void sieve(int n, boolean[] prime) {
+		for (int i = 2; i * i <= n; i++)
+			if (!prime[i])
+				for (int j = i * 2; j < n; j += i)
+					prime[j] = true;
+		for (int i = 2; i <= n; i++)
+			if (!prime[i])
+				System.out.println(i);
+	}
+}
